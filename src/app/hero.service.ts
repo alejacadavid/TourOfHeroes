@@ -9,14 +9,14 @@ import { Hero } from './hero';
 export class HeroService {
  
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = 'http://localhost:8080/tourofheroes/listar';  // URL to web api
  
   constructor(private http: Http) { }
  
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
-               .then(response => response.json().data as Hero[])
+               .then(response => response.json() as Hero[])
                .catch(this.handleError);
   }
  
